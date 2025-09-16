@@ -26,8 +26,16 @@
         </header>
         
         <div class="input-section">
-            <label for="numberInput">Enter a number (0-100):</label>
-            <input type="number" id="numberInput" min="0" max="100" placeholder="Type a number...">
+            <label for="numberInput">Enter any integer:</label>
+            <input type="number" id="numberInput" placeholder="Type any number...">
+            
+            <div class="seed-controls">
+                <label for="seedInput">Seed (for reproducible results):</label>
+                <div class="seed-input-group">
+                    <input type="number" id="seedInput" placeholder="Enter seed or leave empty for random">
+                    <button id="generateButton" class="generate-btn">🎲 New Random</button>
+                </div>
+            </div>
         </div>
         
         <div class="result-section">
@@ -38,7 +46,14 @@
         
         <div class="info-section">
             <h3>About</h3>
-            <p>This application shows mathematical formulas that equal numbers from 0 to 100, using only the number 4 and various mathematical operations including factorials, logarithms, gamma functions, and more.</p>
+            <p>This application dynamically generates mathematical formulas that equal any integer, using only the number 4 and various mathematical operations including factorials, logarithms, gamma functions, and more. Each formula is randomly generated but can be reproduced using the same seed.</p>
+            <p><strong>Features:</strong></p>
+            <ul>
+                <li>Generate formulas for any integer (positive or negative)</li>
+                <li>Random generation with customizable seeds for reproducible results</li>
+                <li>Uses only the digit 4 with mathematical operations</li>
+                <li>Instant display as you type</li>
+            </ul>
         </div>
     </div>
     
