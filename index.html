@@ -29,11 +29,12 @@
             <label for="numberInput">Enter any integer:</label>
             <input type="number" id="numberInput" placeholder="Type any number...">
             
-            <div class="seed-controls">
-                <label for="seedInput">Seed (for reproducible results):</label>
-                <div class="seed-input-group">
-                    <input type="number" id="seedInput" placeholder="Enter seed or leave empty for random">
-                    <button id="generateButton" class="generate-btn">🎲 New Random</button>
+            
+            <div class="term-controls">
+                <label for="termLimitInput">Maximum number of terms:</label>
+                <div class="term-input-group">
+                    <input type="number" id="termLimitInput" min="1" max="10" value="4" placeholder="Max terms">
+                    <span id="maxNumberDisplay" class="max-number-display">Max: 16,777,216</span>
                 </div>
             </div>
         </div>
@@ -46,13 +47,15 @@
         
         <div class="info-section">
             <h3>About</h3>
-            <p>This application dynamically generates mathematical formulas that equal any integer, using only the number 4 and various mathematical operations including factorials, logarithms, gamma functions, and more. Each formula is randomly generated but can be reproduced using the same seed.</p>
+            <p>This application generates the shortest possible mathematical formulas that equal any integer, using only the number 4 and various mathematical operations including factorials, logarithms, gamma functions, integrals, and advanced mathematical functions.</p>
             <p><strong>Features:</strong></p>
             <ul>
-                <li>Generate formulas for any integer (positive or negative)</li>
-                <li>Random generation with customizable seeds for reproducible results</li>
+                <li>Generate shortest formulas for any integer (positive or negative)</li>
+                <li>Deterministic results - same input always produces same output</li>
                 <li>Uses only the digit 4 with mathematical operations</li>
                 <li>Instant display as you type</li>
+                <li>Configurable maximum number of terms</li>
+                <li>Expression length optimization</li>
             </ul>
         </div>
     </div>

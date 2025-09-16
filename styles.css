@@ -74,13 +74,15 @@ header p {
     transform: translateY(-2px);
 }
 
-.seed-controls {
+
+
+.term-controls {
     margin-top: 2rem;
     padding-top: 2rem;
     border-top: 2px solid #f0f0f0;
 }
 
-.seed-controls label {
+.term-controls label {
     display: block;
     font-size: 1rem;
     font-weight: 600;
@@ -88,16 +90,15 @@ header p {
     color: #555;
 }
 
-.seed-input-group {
+.term-input-group {
     display: flex;
     gap: 1rem;
     align-items: center;
     flex-wrap: wrap;
 }
 
-#seedInput {
-    flex: 1;
-    min-width: 200px;
+#termLimitInput {
+    width: 100px;
     padding: 0.8rem;
     font-size: 1rem;
     border: 2px solid #e0e0e0;
@@ -107,33 +108,21 @@ header p {
     background: #fafafa;
 }
 
-#seedInput:focus {
+#termLimitInput:focus {
     outline: none;
     border-color: #667eea;
     background: white;
     box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
 
-.generate-btn {
-    padding: 0.8rem 1.5rem;
-    font-size: 1rem;
-    font-weight: 600;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    white-space: nowrap;
-}
-
-.generate-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-}
-
-.generate-btn:active {
-    transform: translateY(0);
+.max-number-display {
+    font-size: 0.9rem;
+    color: #666;
+    background: #f8f9fa;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    border: 1px solid #e9ecef;
+    font-weight: 500;
 }
 
 .result-section {
@@ -235,18 +224,7 @@ header p {
         font-size: 2rem;
     }
     
-    .seed-input-group {
-        flex-direction: column;
-        align-items: stretch;
-    }
     
-    #seedInput {
-        min-width: auto;
-    }
-    
-    .generate-btn {
-        width: 100%;
-    }
 }
 
 /* Animation for smooth transitions */

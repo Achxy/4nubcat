@@ -1,4 +1,4 @@
-// Generate mathematical expressions using only the digit 4 that equal any integer n.
+// Test the new algorithm
 
 /* ---------- expression length calculator ---------- */
 function calculateExpressionLength(expression) {
@@ -248,104 +248,13 @@ function generateLatex(n, maxTerms = 4) {
   };
 }
 
-/* ---------- calculate maximum number possible with given term limit ---------- */
-function calculateMaxNumber(termLimit) {
-  // With the new algorithm, we can theoretically reach much larger numbers
-  // Using powers, factorials, and other operations
-  return Math.pow(4, Math.min(termLimit * 4, 20));
-}
+// Export for testing
+module.exports = { generateLatex };
 
-/* ---------- format large numbers ---------- */
-function formatNumber(num) {
-  if (num >= 1000000) {
-    return (num / 1000000).toFixed(1) + 'M';
-  } else if (num >= 1000) {
-    return (num / 1000).toFixed(1) + 'K';
-  }
-  return num.toLocaleString();
-}
-
-/* ---------- DOM manipulation and event handling ---------- */
-document.addEventListener('DOMContentLoaded', function() {
-  const numberInput = document.getElementById('numberInput');
-  const formulaDisplay = document.getElementById('formulaDisplay');
-  const termLimitInput = document.getElementById('termLimitInput');
-  const maxNumberDisplay = document.getElementById('maxNumberDisplay');
-  
-  let currentTermLimit = 4;
-  
-  function displayFormula(number) {
-    if (number !== null && !isNaN(number) && Number.isInteger(number)) {
-      try {
-        const result = generateLatex(number, currentTermLimit);
-        const formula = result.latex;
-        
-        // Count the number of terms in the formula
-        const termCount = formula.split(' + ').length;
-        
-        // Convert double backslashes to single backslashes for proper LaTeX rendering
-        const cleanFormula = formula.replace(/\\\\/g, '\\');
-        
-        formulaDisplay.innerHTML = `
-          <div class="formula">
-            <span class="number">${number}</span>
-            <span class="equals">=</span>
-            <span class="formula-text">$$${cleanFormula}$$</span>
-          </div>
-          <div class="formula-info">
-            <small>Generated value: ${result.value} | Terms used: ${termCount}/${currentTermLimit} | Expression length: ${calculateExpressionLength(formula)}</small>
-          </div>
-        `;
-        
-        // Re-render MathJax
-        if (window.MathJax) {
-          MathJax.typesetPromise([formulaDisplay]).catch((err) => console.log('MathJax error:', err));
-        }
-      } catch (error) {
-        formulaDisplay.innerHTML = `
-          <div class="formula error">
-            <p>Error generating formula for ${number}: ${error.message}</p>
-          </div>
-        `;
-      }
-    } else if (numberInput.value.trim() === '') {
-      formulaDisplay.innerHTML = '<p>Enter a number above to see its formula</p>';
-    } else {
-      formulaDisplay.innerHTML = `
-        <div class="formula error">
-          <p>Please enter a valid integer.</p>
-        </div>
-      `;
-    }
-  }
-  
-  // Handle number input
-  numberInput.addEventListener('input', function() {
-    const number = parseInt(this.value);
-    displayFormula(number);
-  });
-  
-  // Handle term limit input
-  termLimitInput.addEventListener('input', function() {
-    const termLimit = parseInt(this.value) || 4;
-    currentTermLimit = Math.max(1, Math.min(10, termLimit)); // Clamp between 1 and 10
-    this.value = currentTermLimit;
-    
-    // Update max number display
-    const maxNumber = calculateMaxNumber(currentTermLimit);
-    maxNumberDisplay.textContent = `Max: ${formatNumber(maxNumber)}`;
-    
-    // Regenerate formula if there's a number entered
-    const number = parseInt(numberInput.value);
-    if (!isNaN(number)) {
-      displayFormula(number);
-    }
-  });
-  
-  // Initialize max number display
-  const initialMaxNumber = calculateMaxNumber(currentTermLimit);
-  maxNumberDisplay.textContent = `Max: ${formatNumber(initialMaxNumber)}`;
-  
-  // Initialize display
-  displayFormula(null);
-});
+// Test the algorithm
+console.log('Testing 55:');
+const result = generateLatex(55);
+console.log('Result:', result);
+console.log('LaTeX:', result.latex);
+console.log('Value:', result.value);
+console.log('Terms:', result.terms);
